@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<style type="text/css">
+		p{
+			font-family: sans-serif;
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body bgcolor="#FFFAF0">
+<center>
+<h1 style="font-family:lucida handwriting; font-size:30;">About Frame</h1>
+<p>
+<hr>
+<center>
+<p>
+<span style="font-size:25px;">L</span>ots of modern websites have sticky navigation menus that are visible either in the page sidebar or at the top of the page as you scroll up and down the page. However, the CSS features that make sticky navigation possible haven’t always been supported by web browsers. Before this effect could be created with CSS, the HTML frameset and frame elements were used to create page layouts in which certain content remained visible while other content was scrollable.
+</p>
+<h2>
+	The Difference Between Frames and Iframes</h2>
+<p>
+When you use frameset you split the visual real estate of a browser window into multiple frames. Each frame has it’s own contents and the content in one don’t spill into the next.
+
+An iframe, on the other hand, embeds a frame directly inline with the other elements of a webpage.
+
+While both frames and iframes perform a similar function – embedding a resource into a webpage – they are fundamentally different.
+
+Frames are layout-defining elements.
+Iframes are a content-adding elements.</p>
+<h2 id="p1">
+The History and Future of Frames</h2>
+<p>
+Frames have been deemed obsolete by the W3C in HTML5. The reasoning given for this is that frames create usability and accessibility issues. Let’s consider each of these charges.
+</p>
+<h2 id="p2">The Problem with Frames</h2><p>
+Usability challenges: With the rise in popularity of mobile devices and tablets with small displays it’s more important than ever that websites offer multiple views which change based on the size of the device viewport. While frames can be manipulated to provide a certain degree of responsiveness, they are simply not well-suited to creating responsive websites.
+Accessibility challenges: Screen readers and other assistive technologies have a very hard time understanding and communicating websites that use frames.
+In addition to the accessibility and usability issues created by frames, the trend within web design is to separate the content of a webpage from its presentation.
+
+Content should be added and defined by markup such as HTML.
+Presentation should be manipulated with languages like CSS and JavaScript.
+Using frames is primarily about creating a specific look and layout, a presentation task that should really be handled with CSS.
+</p>
+<h2 id="p3">The Future of Frames</h2><p>
+While all modern browser offer support for frames today, the W3C has unequivocally stated that frames “are not to be used by Web developers” and that support for frames in web browsers is offered for historical purposes only.
+
+If you have a website that makes use of frames you should start planning a website migration away from frames. At some point in the future support for frames will be dropped by modern web browsers, and when that happens websites build with frames will become unusable.
+</p>
+<h2 id="p4">How to Create Frames</h2><p>
+While frames should not be used for new websites, learning how to use frames can be beneficial for webmasters who are managing older websites.
+
+The Basic Idea Behind Frames
+The basic concept behind frames is pretty simple:
+
+Use the frameset element in place of the body element in an HTML document.
+Use the frame element to create frames for the content of the web page.
+Use the src attribute to identify the resource that should be loaded inside each frame.
+Create a different file with the contents for each frame.
+Let’s look at a few examples of how this works. First we need a few HTML documents to work with. Let’s create four different HTML documents. Here’s what the first will contain:</p>
+<xmp>
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1>Frame 1</h1>
+        <p>Contents of Frame 1</p>
+    </body>
+</html>
+</xmp>
+<p>
+The first document we’ll save as frame_1.html. The other three documents will have similar contents and follow the same naming sequence.
+</p>
+<h2 id="p6">Creating Vertical Columns</h2><p>
+To create a set of four vertical columns, we need to use the frameset element with the cols attribute.
+The cols attribute is used to define the number and size of columns the frameset will contain. In our case, we have four files to display, so we need four frames. To create four frames we need to assign four comma-separated values to the cols attribute.
+
+To make things simple we’re going to assign the value * to each of the frames, this will cause them to be automatically sized to fill the available space.
+
+Here’s what our HTML markup looks like.</p>
+<xmp>
+<!DOCTYPE html>
+<html>
+<frameset cols="*,*,*,*">
+    <frame src="../file_path/frame_1.html">
+    <frame src="frame_2.html">
+    <frame src="frame_3.html">
+    <frame src="frame_4.html">
+</frameset>
+</html>
+</xmp>
+<h2 id="p7">Creating Horizontal Rows</h2><p>
+Rows of frames can be created by using the rows attribute rather than the cols attribute as shown in the HTML below.</p>
+<xmp>
+<!DOCTYPE html>
+<html>
+<frameset rows="*,*,*,*">
+    <frame src="frame_1.html">
+    <frame src="frame_2.html">
+    <frame src="frame_3.html">
+    <frame src="frame_4.html">
+</frameset>
+</html></xmp><h2 id="p8">
+Mixing Columns and Rows</h2><p>
+Columns and rows of frames can both appear on the same webpage by nesting one frameset inside of another. To do this, we first create a frameset and then nest a child frameset within the parent element. Here’s an example of how we could nest two rows within a set of three columns.</p>
+<xmp>
+<frameset cols="*,*,*">
+    <frameset rows="*,*">
+        <frame src="frame_1.html">
+        <frame src="frame_2.html">
+    </frameset>
+    <frame src="frame_3.html">
+    <frame src="frame_4.html"></xmp>
+<p>
+The nested frameset takes the place of the first frame within the parent element. The nested element can be placed in any position. For example, if we wanted the nested element to appear in the center position we would just rearrange the elements like this.</p>
+<xmp>
+<frameset cols="*,*,*">
+    <frame src="frame_1.html">
+    <frameset rows="*,*">
+        <frame src="frame_2.html">
+        <frame src="frame_3.html">
+    </frameset>
+    <frame src="frame_4.html">
+</frameset>
+</xmp>
+<h2 id="p9">
+How to Style Frames</h2><p>
+When styling the presentation of a webpage that uses frames, there are two different types of styling to consider:
+
+Styling within each frame.
+Styling the frameset
+The presentation of each frame must be defined within the source document. The presentation of the frameset must be defined within the parent document containing the frameset.
+
+In other words, frame_1.html must be styled by CSS rules contained within frame_1.html or within a stylesheet linked to frame_1.html.
+</p>
+<h2>Styling Frame Source Documents</h2><p>
+Just as with any webpage, the contents of each frame can be styled with CSS. In order to style the contents of each frame, the styles must be added to the source document itself either by linking to an external stylesheet within the source document or by adding internal or inline styles to the source document.
+
+Considering our four source documents, CSS styles have to be applied to each document individually. Applying CSS styles to the webpage that contains the frameset will not cause those styles to apply to each individual document.
+
+If we want to style frame_1.html we need to add styles directly to the document itself either by linking to an external style sheet or by typing them directly into the document. Here’s an example of how we might do that:</p>
+<xmp>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {background: gray;}
+            h1 {color: blue;}
+            p {margin: 20px;}
+        </style>
+    </head>
+    <body>
+        <h1>Frame 1</h1>
+        <p>Contents of Frame 1</p>
+    </body>
+</html>
+</xmp>
+</frameset>
+</body>
+</html>
